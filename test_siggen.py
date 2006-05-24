@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: iso-8859-1 -*-
 #
-# $Id: test_siggen.py,v 1.1 2006/05/20 18:25:38 grahn Exp $
+# $Id: test_siggen.py,v 1.2 2006/05/24 23:55:02 grahn Exp $
 #
 # Copyright (c) 2006 Jörgen Grahn.
 # All rights reserved.
@@ -35,9 +35,16 @@ class test(unittest.TestCase):
     def testSpacing(self):
         self.assertExp(self.ten_three, '  foo,  foo   ',
                        '=============\n'
-                       '==foo,      =\n'
-                       '=foo       ==\n'
+                       '==foo, foo  =\n'
+                       '=          ==\n'
                        '==          =\n'
+                       '=============\n')
+    def testMoreSpacing(self):
+        self.assertExp(self.ten_three, 'a b c d e f g h i jj k l m n oo',
+                       '=============\n'
+                       '==a b c d e =\n'
+                       '=f g h i jj==\n'
+                       '==k l m n oo=\n'
                        '=============\n')
     def testStuffing(self):
         self.assertExp(self.ten_three, 'power to the user',
