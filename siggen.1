@@ -1,0 +1,54 @@
+.\" $Id: siggen.1,v 1.1 2006/05/30 21:47:04 grahn Exp $
+.\" $Name:  $
+.\" 
+.\"
+.TH siggen 1 "MAY 2006" "SIGGEN" "User Manuals"
+.
+.SH "NAME"
+siggen \- insert random quotes in signatures
+.
+.SH "SYNOPSIS"
+.B siggen
+[\-f
+.IR quotes-file ]
+.I signature-file
+.
+.SH "DESCRIPTION"
+.B siggen
+inserts a random quote from
+.I quotes-file
+into
+.IR signature-file ,
+and prints the result to standard output.
+It is useful with mail user agents like
+.BR mutt (1)
+which can call external programs to generate the signatures
+for inclusion in outgoing mail.
+.PP
+The signature file should include
+.B #
+characters defining the area into which the quote is formatted,
+flush left.
+The quote may be split across several of these areas.
+.
+.SH "EXAMPLES"
+.ft CR
+.nf
+--
+John Doe         | #############################
+jdoe@example.com | #############################
+.fi
+.
+.SH "OPTIONS"
+.IP "\fB\-f\fI quotes-file"
+A file, with one quote (or other piece of text) per line.
+One of these is picked at random.
+.
+.SH "AUTHOR"
+Jörgen Grahn <grahn+src@snipabacken.dyndns.org>
+.
+.SH "LICENSE"
+BSD-style, without (non-) advertising clause.
+.
+.SH "SEE ALSO"
+.BR muttrc (5).
