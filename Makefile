@@ -26,6 +26,8 @@ check: tests
 checkv: tests
 	valgrind -q ./tests -v
 
+libsiggen.a: render.o
+libsiggen.a: fortune.o
 libsiggen.a: split.o
 libsiggen.a: files...o
 	$(AR) $(ARFLAGS) $@ $^
@@ -33,6 +35,7 @@ libsiggen.a: files...o
 siggen: siggen.o libsiggen.a
 	$(CXX) $(CXXFLAGS) -o $@ siggen.o -L. -lsiggen
 
+libtest.a: test/render.o
 libtest.a: test/split.o
 libtest.a: test/files...o
 	$(AR) $(ARFLAGS) $@ $^
