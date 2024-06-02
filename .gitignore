@@ -1,0 +1,6 @@
+siggen
+*.[oa]
+test.cc
+tests
+TAGS
+dep/
