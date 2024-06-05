@@ -26,12 +26,14 @@ check: tests
 checkv: tests
 	valgrind -q ./tests -v
 
+libsiggen.a: split.o
 libsiggen.a: files...o
 	$(AR) $(ARFLAGS) $@ $^
 
 siggen: siggen.o libsiggen.a
 	$(CXX) $(CXXFLAGS) -o $@ siggen.o -L. -lsiggen
 
+libtest.a: test/split.o
 libtest.a: test/files...o
 	$(AR) $(ARFLAGS) $@ $^
 
