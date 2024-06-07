@@ -119,36 +119,14 @@ std::vector<std::string> split(const std::string& delimiter,
     return acc;
 }
 
-namespace {
-    template <class Sep, class Cont>
-    std::ostream& jointo(std::ostream& os, const Sep& sep, const Cont& v)
-    {
-	bool first = true;
-	for (const auto& item: v) {
-	    if (first) {
-		first = false;
-		os << item;
-	    }
-	    else {
-		os << sep << item;
-	    }
-	}
-	return os;
-    }
-}
-
 std::string join(char sep,
 		 const std::vector<std::string>& v)
 {
-    std::ostringstream oss;
-    jointo(oss, sep, v);
-    return oss.str();
+    return join(sep, begin(v), end(v));
 }
 
 std::string join(const std::string& sep,
 		 const std::vector<std::string>& v)
 {
-    std::ostringstream oss;
-    jointo(oss, sep, v);
-    return oss.str();
+    return join(sep, begin(v), end(v));
 }

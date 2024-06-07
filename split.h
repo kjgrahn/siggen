@@ -18,6 +18,17 @@ std::vector<std::string> split(const std::string& delimiter,
 std::vector<std::string> split(const std::string& delimiter,
 			       const char* a, const char* b);
 
+template <class Sep, class It>
+std::string join(Sep sep, It a, It b)
+{
+    std::string s;
+    for (It it=a; it!=b; it++) {
+	if (it != a) s += sep;
+	s += *it;
+    }
+    return s;
+}
+
 std::string join(char sep,
 		 const std::vector<std::string>& v);
 std::string join(const std::string& sep,
